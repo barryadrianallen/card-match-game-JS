@@ -1,0 +1,45 @@
+:root {
+    --main-bg-color: rgb(35,31,32);
+    --orange-highlight: rgb(255,80,1);
+    --lightgray-color: rgb(239,239,239);
+    --midgray-color: rgb(179,174,168);
+    --darkgray-color: rgb(100,99,104);
+    --off-black-color: rgb(35,31,32);
+    --modern-red: rgb(147,36,50);
+    --dark-blue: rgb(40,55,71);
+  }
+  
+body{
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    background-color: var(--midgray-color);
+}
+
+header{
+    grid-column: 1 / 7;
+}
+
+#title{
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(230, 50, 110);
+    font-size: 60px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 1.5em;
+    column-gap: 1.5em;
+}
+  
+img{
+    height: 140x;
+    width: 75px;
+    cursor: pointer;
+    justify-self: center;
+    box-shadow:10px 10px 10px var(--darkgray-color);
+}
+
+
