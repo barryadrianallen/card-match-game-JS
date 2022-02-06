@@ -5,23 +5,23 @@ let card1Index;
 let card2Index;
 
 var View = {
-    revealCard1: function(card){
+    revealCard1: (card)=> {
         imgTagList[card].src = Model.cardURL[shuffledIndexArray[card]];
         Model.firstCardUrl = Model.cardURL[shuffledIndexArray[card]];
         card1Index = card;
         userCardNumber++;
     },
-    revealCard2: function(card){
+    revealCard2: (card)=> {
         imgTagList[card].src = Model.cardURL[shuffledIndexArray[card]];
         Model.secondCardUrl = Model.cardURL[shuffledIndexArray[card]];
         card2Index = card;
         userCardNumber++;
     },
-    hideCards: function(){
+    hideCards: ()=> {
         imgTagList[card1Index].src = "Cards_png/blue_back.png";
         imgTagList[card2Index].src = "Cards_png/blue_back.png";
     },
-    removeCards: function(){
+    removeCards: ()=> {
         imgTagList[card1Index].src = "Cards_png/red_back.png";
         imgTagList[card2Index].src = "Cards_png/red_back.png";
     }
@@ -42,7 +42,7 @@ var Model = {
 }
 
 var Controller = {
-    checkForMatch: function(){
+    checkForMatch: ()=> {
         if (Model.firstCardUrl == Model.secondCardUrl){
             View.removeCards();
             userCardNumber = 0;
@@ -56,7 +56,7 @@ var Controller = {
     }
 }
 
-function init(){
+let init = ()=> {
     shuffleCardFilePaths();
 }
 
@@ -79,27 +79,27 @@ function shuffleArray(array) {
     return array;
 }
 
-function pickCard(cardNumber){
+let pickCard = (cardNumber)=> {
     
     if(userCardNumber == 0){
         View.revealCard1(cardNumber);
     }
     else if(userCardNumber == 1){
         View.revealCard2(cardNumber);
-        setTimeout(Controller.checkForMatch, 300);
+        setTimeout(Controller.checkForMatch, 800);
     }
     else{
         return;
     }
 }
 
-function shuffleCardFilePaths(){
+let shuffleCardFilePaths = ()=> {
     for (let i=0; i<shuffledIndexArray.length; i++){
         Model.shuffledCardUrls.push(Model.cardURL[shuffledIndexArray[i]]);
     }
 }
 
-function checkGameState(){
+let checkGameState = ()=> {
     if (Model.cardsRemaining == 0){
         let reset = window.confirm("Game Over: Play again?");
         if (reset){
@@ -114,13 +114,13 @@ function checkGameState(){
     }
 }
 
-function resetCards(){
+let resetCards = ()=> {
     for(let i=0; i<imgTagList.length; i++){
         imgTagList[i].src = "Cards_png/blue_back.png";
     }
 }
 
-function resetGame(){
+let resetGame = ()=> {
     index = [];
     indexArray = initializeIndexArray(index);
     shuffledIndexArray = shuffleArray(indexArray);
